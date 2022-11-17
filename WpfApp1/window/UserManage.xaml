@@ -1,0 +1,36 @@
+﻿<UserControl x:Class="WpfApp1.window.UserManage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WpfApp1.window"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.6*"/>
+            <ColumnDefinition Width="0.5*" />
+        </Grid.ColumnDefinitions>
+        <DataGrid Name="UserDataGrid" IsReadOnly="True" ColumnWidth="*">
+            
+            
+        </DataGrid>
+        <Button Grid.Column="1" Content="新增用户" FontSize="18" 
+                Name="adduser" Click="adduser_Click"
+                HorizontalAlignment="Left" Margin="40,80,0,0"
+                VerticalAlignment="Top" Height="50" Width="120" />
+        <Button Grid.Column="1" Content="编辑用户" FontSize="18" 
+                Name="edituser"
+                HorizontalAlignment="Left" Margin="200,80,0,0"
+                VerticalAlignment="Top" Height="50" Width="120" Click="edituser_Click"/>
+        <Button Grid.Column="1" Content="删除用户" FontSize="18"
+                Name="deleteuser"
+                HorizontalAlignment="Left" Margin="40,170,0,0"
+                VerticalAlignment="Top" Height="50" Width="120" Click="deleteuser_Click"/>
+        <Button Grid.Column="1" Content="刷新" FontSize="18"
+                HorizontalAlignment="Left" Margin="200,170,0,0"
+                VerticalAlignment="Top" Height="50" Width="120"/>
+
+
+    </Grid>
+</UserControl>

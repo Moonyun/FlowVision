@@ -1,0 +1,55 @@
+﻿<UserControl x:Class="WpfApp1.window.Setup"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:wd ="clr-namespace:WpfApp1.windowmodel"
+             xmlns:local="clr-namespace:WpfApp1"
+             xmlns:common="clr-namespace:WpfApp1.common"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <Style TargetType="RadioButton" x:Key="PageButtonStyle">
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="RadioButton">
+                            <Border Height="40" Width="100" CornerRadius="2" Name="back" >
+                                <ContentControl Content="{TemplateBinding Content}" VerticalAlignment="Center" HorizontalAlignment="Center"
+                                                        FontSize="20" Foreground="Black"/>
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsChecked" Value="True">
+                                    <Setter TargetName="back" Property="Background" Value="white"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+
+                </Setter>
+            </Style>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="100"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Border Background="AliceBlue">
+            <!--子界面选择-->
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Left">
+                <RadioButton Content="通信设置" Style="{StaticResource PageButtonStyle}" IsChecked="True"
+                             Command="{Binding SetpageChanged}" CommandParameter="ComSetting" Margin="0,5,0,0"/>
+                <RadioButton Content="用户管理" Style="{StaticResource PageButtonStyle}"
+                             Command="{Binding SetpageChanged}" CommandParameter="UserManage" Margin="0,5,0,0"/>
+                <RadioButton Content="相机设置" Style="{StaticResource PageButtonStyle}"
+                             Command="{Binding SetpageChanged}" CommandParameter="CameraSetting" Margin="0,5,0,0"/>
+            </StackPanel>
+        </Border>
+        <!--设置里选择子界面-->
+        <ContentControl Grid.Column="1" Content="{Binding Setpagecontent}"/>
+        
+
+    </Grid>
+</UserControl>

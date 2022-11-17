@@ -1,0 +1,102 @@
+﻿<Window x:Class="WpfApp1.window.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:wd ="clr-namespace:WpfApp1.windowmodel"
+        xmlns:local="clr-namespace:WpfApp1"
+        xmlns:common="clr-namespace:WpfApp1.common" 
+        mc:Ignorable="d"
+        FontFamily = "Microsoft YaHei" FontSize="16"
+        WindowStartupLocation = "CenterScreen"   
+        WindowStyle="None" Background="{x:Null}" AllowsTransparency="True"
+        Title="Flow Vsion" >
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="../assets/Styles/DefualtStyle.xaml"/>
+                <!--首栏按钮布局-->
+                <ResourceDictionary>
+                    <Style TargetType="RadioButton" x:Key="NavButtonStyle">
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="RadioButton">
+                                    <Border Background="#AFEEEE" Height="50" Width="100" CornerRadius="8" Name="back" Margin="0,0,10,0">
+                                        <ContentControl Content="{TemplateBinding Content}" VerticalAlignment="Center" HorizontalAlignment="Center"
+                                                        FontFamily="../assets/fonts/#iconfont" 
+                                                        FontSize="25" Foreground="Black"/>
+                                    </Border>
+                                    <ControlTemplate.Triggers>
+                                        <Trigger Property="IsChecked" Value="True">
+                                            <Setter TargetName="back" Property="Background" Value="#78FFFF"/>
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Setter.Value>
+
+                        </Setter>
+                    </Style>
+                </ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+            
+    </Window.Resources>
+
+    <Border Margin="2" Background="White" CornerRadius="2">
+        <!--外边框-->
+        <Border.Effect>
+            <DropShadowEffect Color="Gray" ShadowDepth="0"
+                              BlurRadius="5" Opacity="0.3" Direction="0">
+            </DropShadowEffect>
+        </Border.Effect>
+        <Grid>
+            <!--软件第一栏上背景-->
+            <Border Background="#48D1CC" Height="100" VerticalAlignment="Top" MouseLeftButtonDown="Border_MouseLeftButtonDown"/>
+            <!--窗口控制按钮-->
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Right">
+                <Button Height="40" Width="40" Content="&#xe65a;" Foreground="#696969" FontSize="16" Template="{StaticResource windowControlButtonTemplate}" Click="Button_MinWindowClick"/>
+                <Button Height="40" Width="40" Content="&#xe65b;" Foreground="#696969" FontSize="16" Template="{StaticResource windowControlButtonTemplate}" Click="Button_MaxWindowClick"/>
+                <Button Height="40" Width="40" Content="&#xeca0;" Foreground="#696969" FontSize="16" Template="{StaticResource windowControlButtonTemplate}" Click="Button_CloseWindowClick"/>
+            </StackPanel>
+
+            <Grid Margin="10,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="60"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Left">
+                    <TextBlock Text="FLow Vison" FontSize="20" Foreground="#303030" VerticalAlignment="Center"/>
+                    <TextBlock Text="微粒成像分析仪" FontSize="15" Foreground="#696969" Margin="10"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,130,0">
+                    <TextBlock Text="&#xe619;" FontFamily="../assets/fonts/#iconfont" 
+                                           FontSize="20" Foreground="#808080"
+                                           HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    <TextBlock Text="{Binding UserInfo.UserName}" FontSize="15" Foreground="#696969" Margin="10"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Grid.Row="1">
+                    <RadioButton Content="&#xe797;首页" Style="{StaticResource NavButtonStyle}" IsChecked="True"
+                                  Command="{Binding NavChanged}" CommandParameter="FirstPage"/>
+                    <RadioButton Content="&#xe613;质控" Style="{StaticResource NavButtonStyle}" 
+                                 Command="{Binding NavChanged}" CommandParameter="QualityControl"/>
+                    <RadioButton Content="&#xe69f;维护" Style="{StaticResource NavButtonStyle}"
+                                 Command="{Binding NavChanged}" CommandParameter="Maintain"/>
+                    <RadioButton Content="&#xe864;设置" Style="{StaticResource NavButtonStyle}"
+                                 Command="{Binding NavChanged}" CommandParameter="Setup"/>
+                    <RadioButton Content="&#xe60a;监测" Style="{StaticResource NavButtonStyle}" 
+                                 Command="{Binding NavChanged}" CommandParameter="monitor"/>
+                    
+                    
+                </StackPanel>
+
+                <ContentControl Grid.Row="2" Content="{Binding MainContent}"/>
+            </Grid>
+            
+            
+        </Grid>
+        
+        
+       
+    </Border>
+</Window>

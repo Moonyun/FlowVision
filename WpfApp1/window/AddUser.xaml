@@ -1,0 +1,84 @@
+﻿<Window x:Class="WpfApp1.window.AddUser"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp1.window"
+        mc:Ignorable="d" WindowStartupLocation = "CenterScreen"
+        Title="AddUser" Height="600" Width="500">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        
+        <!--用户名栏-->
+        <Grid Grid.Row="0" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.7*"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Label Content="用户名:" HorizontalAlignment="Right"  VerticalAlignment="Center" 
+                   Width="120" Height="40" FontSize="25"/>
+            <TextBox Width="150" Height="40" FontSize="25" Grid.Column="1" Name="InputUsername"
+                         VerticalAlignment="Center" HorizontalAlignment="Left"/>
+
+        </Grid>
+        <!--输入密码-->
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.7*"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Label Content="输入密码:" HorizontalAlignment="Right"  VerticalAlignment="Center" 
+                   Width="120" Height="40" FontSize="25"/>
+            <PasswordBox Width="150" Height="40" FontSize="25" Grid.Column="1" Name="InputPassword"
+                         VerticalAlignment="Center" HorizontalAlignment="Left"/>
+
+        </Grid>
+        <!--确认输入密码-->
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.7*"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Label Content="确认密码:" HorizontalAlignment="Right"  VerticalAlignment="Center" 
+                   Width="120" Height="40" FontSize="25"/>
+            <PasswordBox Width="150" Height="40" FontSize="25" Grid.Column="1" Name="ConfirmPassword"
+                         VerticalAlignment="Center" HorizontalAlignment="Left"/>
+        </Grid>
+        <!--用户分类选择-->
+        <Grid Grid.Row="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.7*"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Label Content="用户分类:" HorizontalAlignment="Right"  VerticalAlignment="Center" 
+                   Width="120" Height="40" FontSize="25"/>
+            <StackPanel Grid.Column="1" Orientation="Horizontal">
+                <RadioButton VerticalAlignment="Center" IsChecked="False"
+                             Margin="10,5,5,5"
+                            Content="管理员" Width="100" Height="25" FontSize="20"/>
+                <RadioButton VerticalAlignment="Center" IsChecked="True"
+                            Content="普通用户" Width="120" Height="25" FontSize="20"/>
+            </StackPanel>
+        </Grid>
+        <!--添加按钮-->
+        <Grid Grid.Row="4">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Button Content="确认添加" Height="40" Width="100" Name="ConfirmAdd" Click="ConfirmAdd_Click"/>
+            <Button Content="取消" Grid.Column="1" Height="40" Width="100" Name="Unadd" Click="Unadd_Click"/>
+        </Grid>
+        
+
+
+
+    </Grid>
+</Window>
